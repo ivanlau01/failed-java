@@ -5,7 +5,7 @@ import java.awt.geom.Point2D;
 import java.awt.geom.RectangularShape;
 
 /**
- * Created by filippo on 04/09/16....3
+ * Created by filippo on 04/09/16....4
  *
  */
 abstract public class Ball {
