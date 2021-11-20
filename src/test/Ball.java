@@ -12,7 +12,7 @@ abstract public class Ball {
 
     private Shape ballFace;
 
-    private Point2D center;
+    private final Point2D center;
 
     Point2D up;
     Point2D down;
