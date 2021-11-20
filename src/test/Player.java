@@ -18,8 +18,6 @@
 package test;
 
 import java.awt.*;
-import java.awt.geom.Point2D;
-import java.awt.geom.Rectangle2D;
 
 
 public class Player {
@@ -30,7 +28,7 @@ public class Player {
 
     private static final int DEF_MOVE_AMOUNT = 5;
 
-    private Rectangle playerFace;
+    private final Rectangle playerFace;
     private Point ballPoint;
     private int moveAmount;
     private int min;
