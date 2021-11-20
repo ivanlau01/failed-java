@@ -25,7 +25,7 @@ abstract public class Ball {
     private int speedX;
     private int speedY;
 
-    public Ball(Point2D center,int radiusA,int radiusB,Color inner,Color border){
+    public Ball(Point2D center,float radiusA,float radiusB,Color inner,Color border){
         this.center = center;
 
         up = new Point2D.Double();
@@ -47,7 +47,7 @@ abstract public class Ball {
         speedY = 0;
     }
 
-    protected abstract Shape makeBall(Point2D center,int radiusA,int radiusB);
+    protected abstract Shape makeBall(Point2D center,float radiusA,float radiusB);
 
     public void move(){
         RectangularShape tmp = (RectangularShape) ballFace;
