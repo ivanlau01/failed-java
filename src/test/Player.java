@@ -29,10 +29,10 @@ public class Player {
     private static final int DEF_MOVE_AMOUNT = 5;
 
     private final Rectangle playerFace;
-    private Point ballPoint;
+    private final Point ballPoint;
     private int moveAmount;
-    private int min;
-    private int max;
+    private final int min;
+    private final int max;
 
 
     public Player(Point ballPoint,int width,int height,Rectangle container) {
