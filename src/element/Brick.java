@@ -1,4 +1,4 @@
-package test;
+package element;
 
 import java.awt.*;
 import java.awt.Point;
@@ -12,7 +12,6 @@ import java.util.Random;
  */
 abstract public class Brick  {
 
-    public static final int MIN_CRACK = 1;
     public static final int DEF_CRACK_DEPTH = 1;
     public static final int DEF_STEPS = 35;
 
@@ -38,10 +37,10 @@ abstract public class Brick  {
 
 
 
-        private GeneralPath crack;
+        private final GeneralPath crack;
 
-        private int crackDepth;
-        private int steps;
+        private final int crackDepth;
+        private final int steps;
 
 
         public Crack(int crackDepth, int steps){
@@ -123,8 +122,8 @@ abstract public class Brick  {
                 x = (i * w) + start.x;
                 y = (i * h) + start.y + randomInBounds(bound);
 
-                if(inMiddle(i,CRACK_SECTIONS,steps))
-                    y += jumps(jump,JUMP_PROBABILITY);
+                if(inMiddle(i, steps))
+                    y += jumps(jump);
 
                 path.lineTo(x,y);
 
@@ -139,16 +138,16 @@ abstract public class Brick  {
             return rnd.nextInt(n) - bound;
         }
 
-        private boolean inMiddle(int i,int steps,int divisions){
-            int low = (steps / divisions);
+        private boolean inMiddle(int i, int divisions){
+            int low = (Crack.CRACK_SECTIONS / divisions);
             int up = low * (divisions - 1);
 
             return  (i > low) && (i < up);
         }
 
-        private int jumps(int bound,double probability){
+        private int jumps(int bound){
 
-            if(rnd.nextDouble() > probability)
+            if(rnd.nextDouble() > Crack.JUMP_PROBABILITY)
                 return randomInBounds(bound);
             return  0;
 
@@ -159,15 +158,15 @@ abstract public class Brick  {
             Point out = new Point();
             int pos;
 
-            switch(direction){
-                case HORIZONTAL:
+            switch (direction) {
+                case HORIZONTAL -> {
                     pos = rnd.nextInt(to.x - from.x) + from.x;
-                    out.setLocation(pos,to.y);
-                    break;
-                case VERTICAL:
+                    out.setLocation(pos, to.y);
+                }
+                case VERTICAL -> {
                     pos = rnd.nextInt(to.y - from.y) + from.y;
-                    out.setLocation(to.x,pos);
-                    break;
+                    out.setLocation(to.x, pos);
+                }
             }
             return out;
         }
@@ -176,13 +175,13 @@ abstract public class Brick  {
 
     private static Random rnd;
 
-    private String name;
+    private final String name;
     Shape brickFace;
 
-    private Color border;
-    private Color inner;
+    private final Color border;
+    private final Color inner;
 
-    private int fullStrength;
+    private final int fullStrength;
     private int strength;
 
     private boolean broken;

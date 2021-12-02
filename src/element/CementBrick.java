@@ -1,4 +1,4 @@
-package test;
+package element;
 
 import java.awt.*;
 import java.awt.geom.GeneralPath;
@@ -13,7 +13,7 @@ public class CementBrick extends Brick {
     private static final Color DEF_BORDER = new Color(217, 199, 175);
     private static final int CEMENT_STRENGTH = 2;
 
-    private Crack crack;
+    private final Crack crack;
     private Shape brickFace;
 
 
